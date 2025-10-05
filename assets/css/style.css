@@ -1,29 +1,54 @@
+/* =========================================================
+   AuraLink Technologies — Starter Theme with RF Wave Animation
+   ========================================================= */
 
-/* AuraLink Technologies — Starter theme */
+/* ---------- Brand Colors & Base Theme ---------- */
 :root {
   --brand-gradient-start: #0d6efd;
   --brand-gradient-end: #6610f2;
 }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
 .bg-gradient-auralink {
   background: linear-gradient(135deg, var(--brand-gradient-start), var(--brand-gradient-end));
 }
+
 a.nav-link.active {
   font-weight: 600;
 }
-/* ==== RF Wave Animation (visible version) ==== */
-.hero-section {
-  height: 80vh;
-  background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
-  position: relative;
-  overflow: hidden;
+
+.navbar-brand img {
+  vertical-align: middle;
 }
 
+/* ---------- Hero Section with Visible RF Wave Animation ---------- */
+.hero-section {
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-gradient-start) 0%, var(--brand-gradient-end) 100%);
+}
+
+/* Main text container sits above animation */
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* RF wave animation background */
 .wave-bg {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 200%;
   height: 120%;
   transform: translateX(-25%);
+  overflow: hidden;
 }
 
 .wave-bg::before,
@@ -37,24 +62,75 @@ a.nav-link.active {
   background-size: 50% 100%;
 }
 
+/* top wave – bright and fast */
 .wave-bg::before {
   top: 0;
-  background-image: radial-gradient(circle at 0 50%, rgba(255,255,255,0.15) 25%, transparent 26%);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 0.25) 0px,
+    rgba(0, 255, 255, 0.25) 20px,
+    rgba(255, 0, 255, 0.2) 40px,
+    rgba(255, 0, 0, 0.15) 60px,
+    transparent 80px
+  );
   animation: waveSlide 6s linear infinite;
+  opacity: 0.8;
 }
 
+/* lower wave – dimmer and slower */
 .wave-bg::after {
   top: 20px;
-  background-image: radial-gradient(circle at 0 50%, rgba(255,255,255,0.08) 25%, transparent 26%);
-  animation: waveSlide 9s linear infinite reverse;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 0.15) 0px,
+    rgba(0, 255, 255, 0.15) 20px,
+    rgba(255, 0, 255, 0.1) 40px,
+    rgba(255, 0, 0, 0.08) 60px,
+    transparent 80px
+  );
+  animation: waveSlide 10s linear infinite reverse;
+  opacity: 0.6;
 }
 
+/* motion keyframes */
 @keyframes waveSlide {
   from { background-position: 0 0; }
   to   { background-position: 50% 0; }
 }
 
-/* optional: logo placeholder alignment tweak */
-.navbar-brand img {
-  vertical-align: middle;
+/* ---------- Cards and Content Blocks ---------- */
+.card {
+  border: none;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  background-color: var(--brand-gradient-start);
+  border-color: var(--brand-gradient-start);
+}
+.btn-primary:hover {
+  background-color: var(--brand-gradient-end);
+  border-color: var(--brand-gradient-end);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 65vh;
+  }
 }
