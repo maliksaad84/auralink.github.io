@@ -21,8 +21,19 @@ a.nav-link.active {
   font-weight: 600;
 }
 
+/* ---------- Navbar Brand Styling ---------- */
 .navbar-brand img {
   vertical-align: middle;
+}
+
+/* AuraLink written in blue (dot removed) */
+.brand-blue {
+  color: #0d6efd !important;        /* Primary AuraLink Blue */
+  transition: color 0.3s ease;
+}
+
+.brand-blue:hover {
+  color: #6610f2 !important;        /* Violet hover tone to match gradient */
 }
 
 /* ---------- Hero Section with Visible RF Wave Animation ---------- */
