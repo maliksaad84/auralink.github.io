@@ -145,3 +145,8 @@ footer {
     height: 65vh;
   }
 }
+/* optional: logo placeholder alignment tweak */
+.navbar-brand img {
+  vertical-align: middle;
+}
+
